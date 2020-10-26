@@ -1,0 +1,380 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="IntelligentOCR" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uoa="clr-namespace:UiPath.OmniPage.Activities;assembly=UiPath.OmniPage.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Document" Type="InArgument(x:String)" />
+    <x:Property Name="io_Extract" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_GoogleOCRKey" Type="InArgument(x:String)" />
+    <x:Property Name="in_DocumentProcessingKey" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1011,3764</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>IntelligentOCR_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="58">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="IntelligentOCR" sap:VirtualizedContainerService.HintSize="703,3699" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p5:DocumentTaxonomy" Name="Taxonomy" />
+      <Variable x:TypeArguments="p3:Document" Name="DOM" />
+      <Variable x:TypeArguments="x:String" Name="DT" />
+      <Variable x:TypeArguments="x:String" Name="TypeId" />
+      <Variable x:TypeArguments="p2:ExtractionResult" Name="ExtractionResults" />
+      <Variable x:TypeArguments="p2:ExtractionResult" Name="ValidatedExtractionResults" />
+      <Variable x:TypeArguments="sd:DataSet" Name="DataSet" />
+      <Variable x:TypeArguments="x:Int32" Name="Counter" />
+      <Variable x:TypeArguments="x:String" Name="Anterior" />
+      <Variable x:TypeArguments="x:String" Name="InVedere" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[TypeId]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">Cereri.decazare.Cereredecazare</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[Anterior]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[InVedere]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="661,22" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="661,362" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <p:DigitizeDocument DegreeOfParallelism="1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[in_Document]" DocumentText="[DT]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="334,131" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+          <p:DigitizeDocument.OCREngine>
+            <ActivityFunc x:TypeArguments="sd1:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+              <ActivityFunc.Argument>
+                <DelegateInArgument x:TypeArguments="sd1:Image" Name="Image" />
+              </ActivityFunc.Argument>
+              <ui:GoogleCloudOCR FilterRegion="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ApiKey="[in_GoogleOCRKey]" ComputeSkewAngle="False" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_2" Image="[Image]" Language="Romanian" ResizeToApiLimits="False" />
+            </ActivityFunc>
+          </p:DigitizeDocument.OCREngine>
+        </p:DigitizeDocument>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,200" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <p:DigitizeDocument DegreeOfParallelism="1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[in_Document]" DocumentText="[DT]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="334,131" sap2010:WorkflowViewState.IdRef="DigitizeDocument_2">
+              <p:DigitizeDocument.OCREngine>
+                <ActivityFunc x:TypeArguments="sd1:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                  <ActivityFunc.Argument>
+                    <DelegateInArgument x:TypeArguments="sd1:Image" Name="Image" />
+                  </ActivityFunc.Argument>
+                  <uoa:OmniPageOCR Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" BundleType="Basic" ComputeSkewAngle="False" DisplayName="OmniPage OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="OmniPageOCR_1" Image="[Image]" />
+                </ActivityFunc>
+              </p:DigitizeDocument.OCREngine>
+            </p:DigitizeDocument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <p1:DataExtractionScope ClassificationResult="{x:Null}" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[in_Document]" DocumentText="[DT]" DocumentTypeId="[TypeId]" ExtractionResult="[ExtractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="661,169" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[Taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI398e571a17354c12a0a4b7ba7f09e07f&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Cereri.decazare.Cereredecazare&quot;:{&quot;FieldMappings&quot;:{&quot;Cereri.decazare.Cereredecazare.Numelecomplet&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Numelecomplet&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Datanasterii&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Datanasterii&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Loculnasterii&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Loculnasterii&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Prenumeletatalui&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Prenumeletatalui&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Prenumelemamei&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Prenumelemamei&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Adresacompleta&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Adresacompleta&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Telefon&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Telefon&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Email&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Email&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Seria&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Seria&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Numarul&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Numarul&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.CNP&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.CNP&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Facultatea&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Facultatea&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Anuldestudii&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Anuldestudii&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Larude&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Larude&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.garsoniera&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.garsoniera&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.nuambeneficiat&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.nuambeneficiat&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.nuamavut&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.nuamavut&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Anterior&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Anterior&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Solicitat&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Solicitat&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.continuitate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.continuitate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.copil&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.copil&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.medierestante&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.medierestante&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.situatiesociala&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.situatiesociala&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.orfan&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.orfan&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.casadecopii&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.casadecopii&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;Cereri.decazare.Cereredecazare.Datacererii&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Datacererii&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UI398e571a17354c12a0a4b7ba7f09e07f&quot;:&quot;0&quot;},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UI398e571a17354c12a0a4b7ba7f09e07f&quot;:[]}}">
+      <p1:DataExtractionScope.Extractors>
+        <p1:IntelligentFormExtractor SerializedSignatureFields="{x:Null}" ApiKey="[in_DocumentProcessingKey]" DisplayName="Intelligent Form Extractor" Endpoint="https://intelligentforms.uipath.com/" sap:VirtualizedContainerService.HintSize="234,68" sap2010:WorkflowViewState.IdRef="IntelligentFormExtractor_1" MinOverlapPercentage="65" PersistenceId="UI398e571a17354c12a0a4b7ba7f09e07f" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;Cereri.decazare.Cereredecazare&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[{&quot;FieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Numelecomplet&quot;},{&quot;FieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Adresacompleta&quot;},{&quot;FieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Facultatea&quot;},{&quot;FieldId&quot;:&quot;Cereri.decazare.Cereredecazare.Anuldestudii&quot;}],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;]}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;Cereri.decazare.Cereredecazare&quot;,&quot;FormId&quot;:&quot;ee76a7c8&quot;,&quot;FormName&quot;:&quot;Cerere 2&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,842.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;CERERE&quot;,&quot;Box&quot;:[144.8817,56.64,84.1947,19.9616]},{&quot;Text&quot;:&quot;DE&quot;,&quot;Box&quot;:[144.8817,146.3685,29.2728,19.9616]},{&quot;Text&quot;:&quot;CAZARE&quot;,&quot;Box&quot;:[144.8817,181.241,87.8401,19.9616]},{&quot;Text&quot;:&quot;ANUL&quot;,&quot;Box&quot;:[168.2811,56.64,43.108,14.9705]},{&quot;Text&quot;:&quot;UNIVERSITAR&quot;,&quot;Box&quot;:[168.2811,103.4347,104.4263,14.9705]},{&quot;Text&quot;:&quot;2019&quot;,&quot;Box&quot;:[168.2811,211.5797,34.4641,14.9705]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[168.2811,249.77,8.8738,14.9705]},{&quot;Text&quot;:&quot;2020&quot;,&quot;Box&quot;:[168.2811,262.37,34.4336,14.9705]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Numelecomplet&quot;,&quot;Box&quot;:[227.7383,133.2224,441.0741,17.553]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Datanasterii&quot;,&quot;Box&quot;:[255.643,133.6725,135.4728,15.3026]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Loculnasterii&quot;,&quot;Box&quot;:[254.7428,336.6566,237.6399,18.003]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Prenumeletatalui&quot;,&quot;Box&quot;:[283.9977,135.0227,172.829,16.6528]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Prenumelemamei&quot;,&quot;Box&quot;:[283.5477,393.8162,180.9304,17.553]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Adresacompleta&quot;,&quot;Box&quot;:[311.4523,115.2194,458.177,20.7035]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Adresacompleta&quot;,&quot;Box&quot;:[324.9546,115.2194,458.177,22.0537]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Telefon&quot;,&quot;Box&quot;:[351.9592,165.6278,178.23,26.5545]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Email&quot;,&quot;Box&quot;:[349.2587,412.2693,160.677,28.8048]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Seria&quot;,&quot;Box&quot;:[382.1142,114.3192,47.2579,16.2027]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Numarul&quot;,&quot;Box&quot;:[382.5643,183.1808,114.7693,15.3026]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.CNP&quot;,&quot;Box&quot;:[382.5643,325.4047,249.3419,18.003]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Facultatea&quot;,&quot;Box&quot;:[432.5227,171.0287,270.0454,17.1029]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Anuldestudii&quot;,&quot;Box&quot;:[432.9728,549.9924,18.9032,16.6528]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Larude&quot;,&quot;Box&quot;:[471.2292,348.3585,10.3517,11.2519]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.garsoniera&quot;,&quot;Box&quot;:[472.1293,527.4887,9.4516,11.2519]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.nuambeneficiat&quot;,&quot;Box&quot;:[489.2322,364.1112,9.0015,10.8018]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.nuamavut&quot;,&quot;Box&quot;:[489.6823,527.4887,9.9017,10.3517]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Anterior&quot;,&quot;Box&quot;:[516.2368,196.233,38.7065,9.4516]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Anterior&quot;,&quot;Box&quot;:[508.1354,237.1899,334.8563,17.1029]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Solicitat&quot;,&quot;Box&quot;:[548.6422,195.7829,39.1566,11.702]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Solicitat&quot;,&quot;Box&quot;:[543.6914,236.2897,335.7564,18.4531]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.continuitate&quot;,&quot;Box&quot;:[578.7973,419.9206,9.0015,10.8018]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.copil&quot;,&quot;Box&quot;:[579.2474,557.6437,12.152,10.8018]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.medierestante&quot;,&quot;Box&quot;:[595.0,120.1702,8.5514,9.9017]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.situatiesociala&quot;,&quot;Box&quot;:[593.6498,308.3018,11.2519,12.152]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.orfan&quot;,&quot;Box&quot;:[594.5499,419.0204,10.3517,12.152]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.casadecopii&quot;,&quot;Box&quot;:[595.0,558.5439,10.3517,9.4516]},{&quot;Field&quot;:&quot;Cereri.decazare.Cereredecazare.Datacererii&quot;,&quot;Box&quot;:[662.0613,80.5635,142.674,17.1029]}],&quot;Tables&quot;:[]}]}]">
+          <p1:IntelligentFormExtractor.DocumentBounds>
+            <InArgument x:TypeArguments="p2:ResultsDocumentBounds">
+              <DelegateArgumentValue x:TypeArguments="p2:ResultsDocumentBounds">
+                <DelegateInArgument x:TypeArguments="p2:ResultsDocumentBounds" Name="DocumentBounds" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentFormExtractor.DocumentBounds>
+          <p1:IntelligentFormExtractor.DocumentObjectModel>
+            <InArgument x:TypeArguments="p3:Document">
+              <DelegateArgumentValue x:TypeArguments="p3:Document">
+                <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentFormExtractor.DocumentObjectModel>
+          <p1:IntelligentFormExtractor.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentFormExtractor.DocumentPath>
+          <p1:IntelligentFormExtractor.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentFormExtractor.DocumentText>
+          <p1:IntelligentFormExtractor.ExtractorDocumentType>
+            <InArgument x:TypeArguments="p4:ExtractorDocumentType">
+              <DelegateArgumentValue x:TypeArguments="p4:ExtractorDocumentType">
+                <DelegateInArgument x:TypeArguments="p4:ExtractorDocumentType" Name="ExtractorDocumentType" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentFormExtractor.ExtractorDocumentType>
+          <p1:IntelligentFormExtractor.ExtractorResult>
+            <OutArgument x:TypeArguments="p4:ExtractorResult">
+              <DelegateArgumentReference x:TypeArguments="p4:ExtractorResult">
+                <DelegateOutArgument x:TypeArguments="p4:ExtractorResult" Name="ExtractorResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p1:IntelligentFormExtractor.ExtractorResult>
+        </p1:IntelligentFormExtractor>
+      </p1:DataExtractionScope.Extractors>
+    </p1:DataExtractionScope>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="661,266" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <p:PresentValidationStation AutomaticExtractionResults="[ExtractionResults]" DisplayName="Present Validation Station" DocumentObjectModel="[DOM]" DocumentPath="[in_Document]" DocumentText="[DT]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" Taxonomy="[Taxonomy]" ValidatedExtractionResults="[ValidatedExtractionResults]" />
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw Exception="[new BusinessRuleException(exception.Message)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <p1:ExportExtractionResults DataSet="[DataSet]" DisplayName="Export Extraction Results" ExtractionResult="[ValidatedExtractionResults]" sap:VirtualizedContainerService.HintSize="661,22" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" />
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">13</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="661,564" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,399" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[DataSet.Tables(0).Rows(0)(Counter).ToString.Equals(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[Anterior]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[Anterior+DataSet.Tables(0).Columns(Counter).ColumnName+" "]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+          </If>
+          <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[Counter+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <ui:InterruptibleWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Counter &lt; 17" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+      </ui:InterruptibleWhile.Condition>
+    </ui:InterruptibleWhile>
+    <If Condition="[Not Anterior.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="661,208" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[DataSet.Tables(0).Rows(0).Item("Anterior")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Object">[Anterior]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">19</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="661,564" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,399" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[DataSet.Tables(0).Rows(0)(Counter).ToString.Equals(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_3">
+            <If.Then>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[InVedere]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[InVedere+DataSet.Tables(0).Columns(Counter).ColumnName+" "]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+          </If>
+          <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[Counter+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <ui:InterruptibleWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Counter &lt; 25" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+      </ui:InterruptibleWhile.Condition>
+    </ui:InterruptibleWhile>
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="In vedere" DataTable="[DataSet.Tables(0)]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="661,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[DataSet.Tables(0).Rows(0).Item("In vedere")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[InVedere]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[io_Extract]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="661,448" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="611,300" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[DataSet.Tables(0).Rows(0).Item(row.Item(&quot;Field&quot;).ToString).ToString.Equals(String.Empty)]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[row.Item("Value")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">["---------"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+              <If.Else>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[row.Item("Value")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[DataSet.Tables(0).Rows(0).Item(row.Item("Field").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+  </Sequence>
+</Activity>
